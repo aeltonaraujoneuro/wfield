@@ -96,8 +96,8 @@ Returns:
 
 
 def dual_color_hemodymamic_correction(U,SVT_470,SVT_405,
-                                      output_folder = None,
-                                      frame_rate = 30.,
+                                      output_folder,
+                                      frame_rate,
                                       freq_lowpass = 15., 
                                       freq_highpass = 0.1):
     ''' 
