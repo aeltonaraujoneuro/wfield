@@ -140,12 +140,12 @@ def nb_play_movie(data,interval=30,shape = None,**kwargs):
         im.set_data(i.squeeze())
         #plt.gcf().canvas.draw()
         #plt.gcf().canvas.flush_events()
-        return plt.gcf()
+        return plt.gcf();
     slider[0].observe(update_image, names='value')
     return dict(fig = plt.gcf(),
                 ax=plt.gca(),
                 im= im,
-                update = update_image)
+                update = update_image);
 
 def nb_save_movie(data,filename,interval = 100,dpi = 90,shape=None,**kwargs):
     '''
