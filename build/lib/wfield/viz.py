@@ -140,12 +140,12 @@ def nb_play_movie(data,interval=30,shape = None,**kwargs):
         im.set_data(i.squeeze())
         #plt.gcf().canvas.draw()
         #plt.gcf().canvas.flush_events()
-        return plt.gcf()
+        return plt.gcf();
     slider[0].observe(update_image, names='value')
     return dict(fig = plt.gcf(),
                 ax=plt.gca(),
                 im= im,
-                update = update_image)
+                update = update_image);
 
 def nb_save_movie(data,filename,interval = 100,dpi = 90,shape=None,**kwargs):
     '''
@@ -225,6 +225,17 @@ def hv_imshow_stack(X,cmap = 'gray',scale=.8,title='dataset',timelabel = 'frame'
 def napari_show(dat,contrast_limits = None):
     import napari
     if contrast_limits is None:
+        contrast_limits = [dat[0].min(), dat[0].max()]
+    try:
+        napari.run()
+    except RuntimeError:  # If already running in IPython or Jupyter
+        pass
+    viewer = napari.Viewer()
+    viewer.add_image(dat, contrast_limits=contrast_limits, is_pyramid=False)
+        
+def napari_showOLD(dat,contrast_limits = None):
+    import napari
+    if contrast_limits is None:
         contrast_limits = [dat[0].min(),dat[0].max()]
     with napari.gui_qt():
         try:
@@ -234,4 +245,3 @@ def napari_show(dat,contrast_limits = None):
         except: # napari 0.3.5 .... why??
             napari.view_image(dat,
                               contrast_limits=contrast_limits)
-            
