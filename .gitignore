@@ -1,2 +1,3 @@
-# Ignore notebooks directories
+# Ignore directories
 notebooks/
+matlab_SM/
